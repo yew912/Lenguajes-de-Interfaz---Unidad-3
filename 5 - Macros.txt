@@ -1,0 +1,24 @@
+; Alumno: Jesus Eduardo Diaz Gastelum
+; Materia: Lenguajes de Interfaz
+; Horario: 10 - 11
+; Docente: Jose Luis Medina Jimenez
+
+INCLUDE Irvine32.inc
+
+MostrarMensaje MACRO texto
+    mov edx, OFFSET texto
+    call WriteString
+    call Crlf
+ENDM
+
+.data
+    mensajeInicio BYTE "Bienvenidos a tu salon favorito", 0
+    mensajeFin  BYTE "Nos vemos vuelva pronto",  0
+
+.code
+main PROC
+    MostrarMensaje mensajeInicio
+    MostrarMensaje mensajeFin
+    exit
+main ENDP
+END main

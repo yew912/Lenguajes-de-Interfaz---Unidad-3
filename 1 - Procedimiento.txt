@@ -1,0 +1,57 @@
+; Alumno: Jesus Eduardo Diaz Gastelum
+; Materia: Lenguajes de Interfaz
+; Horario: 10 - 11
+; Docente: Jose Luis Medina Jimenez
+
+INCLUDE Irvine32.inc
+.data
+    mensajeInicio BYTE "Inicio del proc", 0
+    mensajeProcedimiento BYTE "Dentro del proc",  0
+    mensajeFin BYTE "Fin programa", 0
+    mensajeLlamada1 BYTE "Direccion de la llamada 1: ", 0
+    mensajeLlamada2 BYTE "Direccion de la llamada 2: ", 0
+.code
+main PROC
+    mov edx, OFFSET mensajeInicio
+    call WriteString
+    call Crlf
+
+    mov eax, 10
+
+    mov edx, OFFSET mensajeLlamada1
+    call WriteString
+    mov eax, OFFSET llamada1
+    call WriteHex
+    call Crlf
+
+llamada1:
+    call mostrarAviso
+
+    mov eax, 20
+
+    mov edx, OFFSET mensajeLlamada2
+    call WriteString
+    mov eax, OFFSET llamada2
+    call WriteHex
+    call Crlf
+
+llamada2:
+    call mostrarAviso
+
+    mov eax, 30
+
+    mov edx, OFFSET mensajeFin
+    call WriteString
+    call Crlf
+
+    exit
+    
+main ENDP
+
+mostrarAviso PROC
+    mov edx, OFFSET mensajeProcedimiento
+    call WriteString
+    call Crlf
+    ret
+mostrarAviso ENDP
+END main

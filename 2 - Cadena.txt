@@ -1,0 +1,31 @@
+; Alumno: Jesus Eduardo Diaz Gastelum
+; Materia: Lenguajes de Interfaz
+; Horario: 10 - 11
+; Docente: Jose Luis Medina Jimenez
+
+INCLUDE Irvine32.inc
+.data 
+    mensajeEntrada BYTE "Escribe tu nombre: ",0
+    caracteresEscritos BYTE "Numero de caracteres: ",0
+    nombre BYTE 20 DUP(0)
+.code
+main PROC
+    mov edx, OFFSET mensajeEntrada
+    call WriteString
+
+    mov edx, OFFSET nombre
+    mov ecx, SIZEOF nombre
+    call ReadString 
+    call Crlf
+
+    mov edx, OFFSET nombre
+    call WriteString
+    call Crlf
+
+    mov edx, OFFSET caracteresEscritos 
+    call WriteString
+    call WriteDec
+
+    exit 
+main ENDP
+END main
